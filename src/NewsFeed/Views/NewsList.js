@@ -14,11 +14,11 @@ class NewsList extends Component{
         console.log("inside componentDidMount");
         axios
             .get(`https://newsapi.org/v2/top-headlines?country=${this.state.country}&apiKey=d5b361315fbe4bd68161f4b7847acb99`)
-            .then(res => res.json())
-            .then(json => {
+            .then(response => {
+                let newsArticles = response.data.articles;
                 this.setState({
                     isLoaded: true,
-                    newsFeed: json
+                    newsFeed: newsArticles
                 })
             })
             .catch(
@@ -30,7 +30,11 @@ class NewsList extends Component{
             );
     }
     render(){
-
+        /**
+         * This below mentioned line will remove the eslint unassign variable 
+         * warning. i.e error, country is declared but never used
+         */
+        // eslint-disable-next-line
         var {isLoaded, newsFeed, error, country} = this.state;
         if(this.state.error){
             return(
@@ -41,8 +45,6 @@ class NewsList extends Component{
         }
         if(!isLoaded){
             return <div>Loading...</div>;
-            console.log("inside if part");
-            console.log(JSON.stringify(this.state.newsFeed));
         }
         else{
             console.log("inside else part");
@@ -52,7 +54,7 @@ class NewsList extends Component{
                         {
                             newsFeed.map((newsItem,index)=>(
                                 <li key= {index}>
-                                    Title: {newsItem}
+                                    Title: {newsItem.title}
                                 </li>
                             ))
                         }
