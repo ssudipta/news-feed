@@ -14,11 +14,11 @@ class NewsList extends Component{
         console.log("inside componentDidMount");
         axios
             .get(`https://newsapi.org/v2/top-headlines?country=${this.state.country}&apiKey=d5b361315fbe4bd68161f4b7847acb99`)
-            .then(res => res.json())
+            //.then(res => res)
             .then(json => {
                 this.setState({
                     isLoaded: true,
-                    newsFeed: json
+                    newsFeed: json.data.articles
                 })
             })
             .catch(
@@ -52,7 +52,7 @@ class NewsList extends Component{
                         {
                             newsFeed.map((newsItem,index)=>(
                                 <li key= {index}>
-                                    Title: {newsItem}
+                                    Title: {newsItem.title}
                                 </li>
                             ))
                         }
