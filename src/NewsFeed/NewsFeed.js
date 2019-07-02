@@ -8,7 +8,7 @@ class NewsFeed extends Component{
             <div>
                 <h1>Top News</h1>
                 <hr/>
-                <NewsList/>
+                {/* <NewsList/> */}
                 
             </div>
         );

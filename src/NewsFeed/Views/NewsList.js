@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-//import API_ROOT from '../../axios-news-feed';
+import API_ROOT from '../../axios-news-feed';
 import axios from 'axios';
 
 class NewsList extends Component{
