@@ -52,7 +52,7 @@ class NewsList extends Component{
                         {
                             newsFeed.map((newsItem,index)=>(
                                 <li key= {index}>
-                                    Title: {newsItem.title}
+                                    Title: <a href= "">{newsItem.title} </a>
                                 </li>
                             ))
                         }
